@@ -1,5 +1,7 @@
 $(document).ready(function() {
-	$('#contact-form').submit(function() {
+	$('#contact-form').submit(function(event) {
+		event.preventDefault();
+
 		var buttonWidth=$('#contact-form button').width();
 		
 		var buttonCopy = $('#contact-form button').html(),
@@ -39,13 +41,25 @@ $(document).ready(function() {
 			$('#contact-form button').html('<i class="icon-refresh icon-spin"></i>'+sendingMessage);
 			
 			var formInput = $(this).serialize();
-			$.post($(this).attr('action'),formInput, function(data){
-				$('#contact-form button').html('<i class="icon-ok"></i>'+okMessage);
-				setTimeout(function(){
-					$('#contact-form button').html(buttonCopy);
-					$('#contact-form button').width('auto');
-				},2000);
-				
+
+			$.ajax('http://formspree.io/perezsebastianm@gmail.com',{
+			    type: "POST",
+			    data: formInput,
+			    dataType: "json",
+			    success: function(data){
+					$('#contact-form button').html('<i class="icon-ok"></i>'+okMessage);
+					setTimeout(function(){
+						$('#contact-form button').html(buttonCopy);
+						$('#contact-form button').width('auto');
+					});
+			    },
+			    error: function(a, b, c){
+			    	$('#contact-form button').html('<i class="icon-remove"></i>' + 'Surgio un error');
+					setTimeout(function(){
+						$('#contact-form button').html(buttonCopy);
+						$('#contact-form button').width('auto');
+					},2000);
+			    }
 			});
 		}
 		
