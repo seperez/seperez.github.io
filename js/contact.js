@@ -52,6 +52,10 @@ $(document).ready(function() {
 						$('#contact-form button').html(buttonCopy);
 						$('#contact-form button').width('auto');
 					});
+
+					$('#contact-form :input').each(function(){
+						$(this).val('');
+					});
 			    },
 			    error: function(a, b, c){
 			    	$('#contact-form button').html('<i class="icon-remove"></i>' + 'Surgio un error');
