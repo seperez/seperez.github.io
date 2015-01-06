@@ -1,4 +1,4 @@
-seperez.github.io
+sebastianperez.me
 =================
 
 My personal website
