@@ -340,12 +340,12 @@ header.jumbotron{
 }
 
 .jumbotron .left-col{
-	width:35%;
+	width:25%;
     text-align:right;
 }
 
 .jumbotron .right-col{
-	width:65%;
+	width:75%;
     text-align:left;
     overflow:hidden;
     border:none;
